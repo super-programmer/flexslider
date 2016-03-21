@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>swiper测试</title>
+		<link rel="stylesheet" type="text/css" href="../css/swiper-3.3.1.min.css" />
+		<script type="text/javascript" src="../js/jquery.js">
+		</script>
+		<script type="text/javascript" src="../js/swiper-3.3.1.jquery.min.js">
+		</script>
+		<style type="text/css">
+			.swiper-container{
+				width:300%;
+				/*height:200px;*/
+				color:white;
+			}
+			.swiper-slide:nth-child(1){
+				background:red;
+			}
+			.swiper-slide:nth-child(2){
+				background:blue;
+			}
+			.swiper-slide:nth-child(3){
+				background:darkorange;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">slider1</div>
+				<div class="swiper-slide">slider2</div>
+				<div class="swiper-slide">slider3</div>
+			</div>
+		</div>
+	</body>
+<script type="text/javascript">
+	var mySwiper = new Swiper('.swiper-container', {
+	autoplay: 5000,//可选选项，自动滑动
+})
+</script>
+</html>

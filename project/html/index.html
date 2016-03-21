@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>热点关注</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper-3.3.1.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<script type="text/javascript" src="../js/jquery.js">
+		</script>
+		<script type="text/javascript" src="../js/swiper-3.3.1.jquery.min.js">
+		</script>
+		<script type="text/javascript" src="../js/common.js">
+		</script>
+		<script type="text/javascript" src="../js/masonry-docs.min.js">
+		</script>
+		<script type="text/javascript" src="../js/iscroll.js">
+		</script>
+		<script type="text/javascript">
+			var myScroll;
+			var myScroll1;
+			var myScroll2;
+
+			function loaded() {
+				setTimeout(function() {
+					myScroll = new iScroll('wrapper', {
+						onScrollEnd: function() {
+							$.ajax({
+								type: "get",
+								url: "http://localhost:8080/Proxy/FootBall/tweet/json/query/hotspot.do",
+								async: true,
+								data: "category=1",
+								success: function(data) {
+									console.info(JSON.parse(data).data);
+									for (var i = 0; i < JSON.parse(data).data.tweetlist.length; i++) {
+										var box = $("<div class='box'><img src='http://101.200.173.217:8080/FootBall/upload/files/20150715/" + JSON.parse(data).data.tweetlist[i].thumbnailname + "'><p>" + JSON.parse(data).data.tweetlist[i].content + "</p></div>")
+										$('#masonry').append(box);
+									}
+								}
+							});
+						},
+					})
+				}, 100);
+				setTimeout(function() {
+					myScroll1 = new iScroll('wrapper1', {
+						onScrollEnd: function() {
+							$.ajax({
+								type: "get",
+								url: "http://localhost:8080/Proxy/FootBall/tweet/json/query/hotspot.do",
+								async: true,
+								data: "category=2",
+								success: function(data) {
+									console.info(JSON.parse(data).data);
+									for (var i = 0; i < JSON.parse(data).data.tweetlist.length; i++) {
+										var box = $("<div class='box'><img src='http://101.200.173.217:8080/FootBall/upload/files/20150715/" + JSON.parse(data).data.tweetlist[i].thumbnailname + "'><p>" + JSON.parse(data).data.tweetlist[i].content + "</p></div>")
+										$('#masonry1').append(box);
+									}
+								}
+							});
+						},
+					})
+				}, 100);
+				setTimeout(function() {
+					myScroll2 = new iScroll('wrapper2', {
+						onScrollEnd: function() {
+							$.ajax({
+								type: "get",
+								url: "http://localhost:8080/Proxy/FootBall/tweet/json/query/hotspot.do",
+								async: true,
+								data: "category=3",
+								success: function(data) {
+									console.info(JSON.parse(data).data.tweetlist[1])
+									for (var i = 0; i < JSON.parse(data).data.tweetlist.length; i++) {
+										var box = $("<div class='box'><img src='http://101.200.173.217:8080/FootBall/upload/files/20150715/" + JSON.parse(data).data.tweetlist[i].thumbnailname + "'><p>" + JSON.parse(data).data.tweetlist[i].content + "</p></div>")
+										$('#masonry2').append(box);
+									}
+								}
+							});
+						},
+					});
+				}, 100);
+			}
+			window.addEventListener('load', loaded, false);
+		</script>
+	</head>
+
+	<body class="indexmain">
+		<header>
+			<a href="index.html">热点</a><a href="attention.html">关注</a>
+		</header>
+		<nav>
+			<div class="live">
+				足球现场
+			</div>
+			<div class="life">
+				足球生活
+			</div>
+			<div class="girl">
+				足球美女
+			</div>
+		</nav>
+		<div class="swiper-container" id="container">
+			<div class="swiper-wrapper">
+				<!--足球现场-->
+				<div class="swiper-slide">
+					<div id="wrapper1">
+						<div id="masonry" class="container-fluid">
+							<!--<div class="box"><img src="../img/waterfall2.png" alt="" />
+								<p>萌萌哒小丸子啊萌萌哒小丸子啊</p>
+							</div>
+							<div class="box"><img src="../img/waterfall1.png" alt="" />
+								<p>小丸子啊小丸子</p>
+							</div>
+							<div class="box"><img src="../img/waterfall3.png" alt="" />
+								<p>小丸子啊小丸子</p>
+							</div>
+							<div class="box"><img src="../img/waterfall4.png" alt="" />
+								<p>萌萌哒小丸子啊萌萌哒小丸子啊</p>
+							</div>-->
+						</div>
+					</div>
+				</div>
+				<!--足球生活-->
+				<div class="swiper-slide">
+					<div id="wrapper2">
+						<div id="masonry1" class="container-fluid">
+							<!--<div class="box"><img src="../img/waterfall2.png" alt="" />
+								<p>萌萌哒小丸子啊萌萌哒小丸子啊</p>
+							</div>
+							<div class="box"><img src="../img/waterfall1.png" alt="" />
+								<p>小丸子啊小丸子</p>
+							</div>
+							<div class="box"><img src="../img/waterfall3.png" alt="" />
+								<p>小丸子啊小丸子</p>
+							</div>
+							<div class="box"><img src="../img/waterfall4.png" alt="" />
+								<p>萌萌哒小丸子啊萌萌哒小丸子啊</p>
+							</div>-->
+						</div>
+					</div>
+				</div>
+				<!--足球美女-->
+				<div class="swiper-slide">
+					<div id="wrapper">
+						<div id="masonry2" class="container-fluid">
+							<!--<div class="box"><img src="../img/waterfall2.png" alt="" />
+								<p>萌萌哒小丸子啊萌萌哒小丸子啊</p>
+							</div>
+							<div class="box"><img src="../img/waterfall1.png" alt="" />
+								<p>小丸子啊小丸子</p>
+							</div>
+							<div class="box"><img src="../img/waterfall3.png" alt="" />
+								<p>小丸子啊小丸子</p>
+							</div>
+							<div class="box"><img src="../img/waterfall4.png" alt="" />
+								<p>萌萌哒小丸子啊萌萌哒小丸子啊</p>
+							</div>-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 如果需要分页器 -->
+			<div class="swiper-pagination" id="swiper-page"></div>
+		</div>
+		<footer>
+			<ul>
+				<li>
+					<img src="../img/iconfont-shouye.png" />
+					<p>首页</p>
+				</li>
+				<li>
+					<img src="../img/iconfont-sousuo.png" />
+					<p>发现</p>
+				</li>
+				<li id="camera">
+					<img src="../img/iconfont-icon38.png" />
+				</li>
+				<li>
+					<img src="../img/iconfont-self-copy.png" />
+					<p>我的</p>
+				</li>
+				<li>
+					<img src="../img/iconfont-tuichu.png" />
+					<p>退出</p>
+				</li>
+			</ul>
+		</footer>
+	</body>
+	<!--瀑布流-->
+	<script type="text/javascript">
+		$(function() {
+			$.ajax({
+				type: "get",
+				url: "http://localhost:8080/Proxy/FootBall/tweet/json/query/hotspot.do",
+				async: true,
+				data: "category=1",
+				success: function(data) {
+					console.info(JSON.parse(data).data);
+					for (var i = 0; i < JSON.parse(data).data.tweetlist.length; i++) {
+						var box = $("<div class='box'><img src='http://101.200.173.217:8080/FootBall/upload/files/20150715/" + JSON.parse(data).data.tweetlist[i].thumbnailname + "'><p>" + JSON.parse(data).data.tweetlist[i].content + "</p></div>")
+						$('#masonry').append(box);
+					}
+				}
+			});
+			var football = $('.swiper-slide');
+			var footdiv = $('nav>div');
+			var page = $('.swiper-pagination span');
+			var mySwiper = new Swiper('.swiper-container', {
+				direction: 'horizontal',
+				loop: false,
+				pagination: '.swiper-pagination',
+				paginationClickable: true,
+				// 如果需要分页器
+				pagination: '.swiper-pagination',
+				onSlideChangeEnd: function(swiper) {
+					var i = swiper.activeIndex;
+					for (var j = 0; j < football.length; j++) {
+						footdiv[j].style.borderBottom = "";
+					}
+					footdiv[i].style.borderBottom = "5px solid #0f91c5";
+				}
+			})
+			for (var j = 0; j < football.length; j++) {
+				footdiv[j].style.borderBottom = "";
+				footdiv[0].style.borderBottom = "5px solid #0f91c5";
+				footdiv[j].index = j;
+				footdiv[j].onclick = function() {
+					for (var i = 0; i < football.length; i++) {
+						footdiv[i].style.borderBottom = "";
+					}
+					$('.swiper-pagination span:eq(' + this.index + ')').click();
+					this.style.borderBottom = "5px solid #0f91c5";
+				}
+			}
+			for (var i=0;i<$('.swiper-pagination span').length;i++) {
+				$('.swiper-pagination span')[i].index=i;
+				$('.swiper-pagination span')[i].onclick=function(){
+					if (this.index==0) {
+					$.ajax({
+							type: "get",
+							url: "http://localhost:8080/Proxy/FootBall/tweet/json/query/hotspot.do",
+							async: true,
+							data: "category=1",
+							success: function(data) {
+								console.info(JSON.parse(data).data);
+								for (var i = 0; i < JSON.parse(data).data.tweetlist.length; i++) {
+									var box = $("<div class='box'><img src='http://101.200.173.217:8080/FootBall/upload/files/20150715/" + JSON.parse(data).data.tweetlist[i].thumbnailname + "'><p>" + JSON.parse(data).data.tweetlist[i].content + "</p></div>")
+									$('#masonry').append(box);
+									/*console.info(this.index)
+									if(this.index==0){
+									}else if(this.index==1){
+										alert()
+										$('#masonry1').append(box);
+									}else if(this.index==2){
+										$('#masonry2').append(box);
+									}*/
+								}
+							}
+						});
+					} else if(this.index==1){
+					$.ajax({
+							type: "get",
+							url: "http://localhost:8080/Proxy/FootBall/tweet/json/query/hotspot.do",
+							async: true,
+							data: "category=2",
+							success: function(data) {
+								console.info(JSON.parse(data).data);
+								for (var i = 0; i < JSON.parse(data).data.tweetlist.length; i++) {
+									var box = $("<div class='box'><img src='http://101.200.173.217:8080/FootBall/upload/files/20150715/" + JSON.parse(data).data.tweetlist[i].thumbnailname + "'><p>" + JSON.parse(data).data.tweetlist[i].content + "</p></div>")
+									$('#masonry1').append(box);
+									/*console.info(this.index)
+									if(this.index==0){
+									}else if(this.index==1){
+										alert()
+										$('#masonry1').append(box);
+									}else if(this.index==2){
+										$('#masonry2').append(box);
+									}*/
+								}
+							}
+						});
+					}else if(this.index==2){
+					$.ajax({
+							type: "get",
+							url: "http://localhost:8080/Proxy/FootBall/tweet/json/query/hotspot.do",
+							async: true,
+							data: "category=3",
+							success: function(data) {
+								console.info(JSON.parse(data).data);
+								for (var i = 0; i < JSON.parse(data).data.tweetlist.length; i++) {
+									var box = $("<div class='box'><img src='http://101.200.173.217:8080/FootBall/upload/files/20150715/" + JSON.parse(data).data.tweetlist[i].thumbnailname + "'><p>" + JSON.parse(data).data.tweetlist[i].content + "</p></div>")
+									$('#masonry2').append(box);
+									/*console.info(this.index)
+									if(this.index==0){
+									}else if(this.index==1){
+										alert()
+										$('#masonry1').append(box);
+									}else if(this.index==2){
+										$('#masonry2').append(box);
+									}*/
+								}
+							}
+						});
+						
+					}
+				}
+			}
+		
+		});
+	</script>
+
+</html>
